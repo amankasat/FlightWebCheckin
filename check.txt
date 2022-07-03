@@ -1,0 +1,17 @@
+Enter the number of Passengers (upto 4)Details of passenger number 1
+Enter First Name : Enter Last Name : Enter Age : Enter Gender (M/F/N): Details of passenger number 2
+Enter First Name : Enter Last Name : Enter Age : Enter Gender (M/F/N): Your PNR is : 17409
+. 1 2 3 | 4 5 6 7 8 9 10
+A □ □ □ | □ ■ □ □ □ □ □ 
+B □ □ □ | □ □ ■ □ □ □ □ 
+C □ □ ■ | □ ■ ■ □ □ □ □ 
+
+
+D □ □ □ | □ □ □ ■ □ □ □ 
+E □ □ □ | □ □ ■ ■ ■ □ □ 
+F □ □ □ | □ □ □ □ □ □ □ 
+Business    Economy
+
+Enter seat number in the correct format; example-A13 5
+
+Enter seat number in the correct format; example-A14 6

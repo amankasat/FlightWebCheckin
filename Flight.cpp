@@ -2,6 +2,8 @@
 #include <string>
 #include <algorithm>
 #include <windows.h>
+// #include<unistd.h> (linux version)
+#include <iomanip>
 using namespace std;
 
 // ■
@@ -28,13 +30,13 @@ class Pnr
 			{
 				cout<<"Details of passenger number "<<(i+1)<<endl;
 				cout<<"Enter First Name : ";
-				cin>>fname[0];
+				cin>>fname[i];
 				cout<<"Enter Last Name : ";
-				cin>>lname[0];
+				cin>>lname[i];
 				cout<<"Enter Age : ";
-				cin>>age[0];
+				cin>>age[i];
 				cout<<"Enter Gender (M/F/N): ";
-				cin>>gender[0];
+				cin>>gender[i];
 			}
 		}
 
@@ -42,6 +44,10 @@ class Pnr
 		Pnr(int n)
 		{
 			passengerCount=n;	
+		}
+		Pnr()
+		{
+			passengerCount=0;	
 		}
 		void start()
 		{
@@ -63,6 +69,7 @@ class Plane
 	string seats[ROWS][COLS];
 	const static int num_seats = 10;
 	int x[num_seats][2];
+	string s[4];
 
 	void generatePlane() {
 		for (int i = 0; i < ROWS; i++) {
@@ -86,12 +93,12 @@ class Plane
 	void bookSeats(int num_p)
 	{
 		for (int i = 0; i < num_p; i++)
-		{ 	string s;
+		{ 	
 			
-			cout<<"\nEnter seat number for in the correct format; example-A1"<<endl;
-			cin>>s;
-			int row = s[0]-65;
-			int col = stoi(s.substr(1))-1;
+			cout<<"\nEnter seat number for passenger number "<<i+1<<" in the correct format; example-A1"<<endl;
+			cin>>s[i];
+			int row = s[i][0]-65;
+			int col = stoi(s[i].substr(1,2))-1;
 			if (!(col>=0 && col<COLS && row>=0 && row<ROWS)){
 				cout<<"Seat does not exist, try again"<<endl;
 				i--;
@@ -135,6 +142,7 @@ class Plane
 };
 
 
+
 int main() {
 	int passengerCount=5;
 	cout<<"Enter the number of Passengers (upto 4) ";
@@ -142,11 +150,12 @@ int main() {
 
 	Pnr p(passengerCount);
 	p.start();
-	cout<<"\nYour PNR is : "<<p.getPnr()<<endl;
+	
 	cout<<"Directing you to web check in\n\n";
 	
 	Sleep(2000);
-	
+	// usleep(2000);
+
 	Plane p1;
 	p1.generatePlane();
 
@@ -158,7 +167,14 @@ int main() {
 
 	p1.displayPlane();
 
-	cout<<"\nCongratulations! Your seats are booked.";
+	cout<<"\nCongratulations! Your seats are booked.\n\n\n";
 
+
+	cout<<left<< setw(13)<< "First Name"<< left<< setw(13)<< "Last Name"<< left<< setw(5)<< "Age"<< left<< setw(6)<< "Gender"<<left<< setw(6)<< "Seat No."<< endl;
+	for (int i = 0; i < 4; i++)
+    {
+    	cout<< left<< setw(13)<<p.fname[i]<< left<< setw(13)<< p.lname[i]<< left<< setw(5)<<p.age[i]<< left<< setw(6)<<p.gender[i]<< left<< setw(6)<<p1.s[i]<<endl;
+    }
+	cout<<"\n\nYour PNR is : "<<p.getPnr()<<endl;
 	return 0;
 }
